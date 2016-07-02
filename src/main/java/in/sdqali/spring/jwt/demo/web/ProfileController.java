@@ -1,5 +1,6 @@
 package in.sdqali.spring.jwt.demo.web;
 
+import in.sdqali.spring.jwt.demo.domain.DetailedProfile;
 import in.sdqali.spring.jwt.demo.domain.MinimalProfile;
 import in.sdqali.spring.jwt.demo.exceptions.ProfileNotFoundException;
 import in.sdqali.spring.jwt.demo.service.ProfileService;
@@ -32,6 +33,14 @@ public class ProfileController {
             produces = APPLICATION_JSON_VALUE)
     public MinimalProfile minimal(@PathVariable String username) {
         return profileService.minimal(username)
+                .orElseThrow(() -> new ProfileNotFoundException(username));
+    }
+
+    @RequestMapping(path = "/details/{username}",
+            method = GET,
+            produces = APPLICATION_JSON_VALUE)
+    public DetailedProfile details(@PathVariable String username) {
+        return profileService.detailed(username)
                 .orElseThrow(() -> new ProfileNotFoundException(username));
     }
 }

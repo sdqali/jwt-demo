@@ -2,6 +2,7 @@ package in.sdqali.spring.jwt.demo.service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import in.sdqali.spring.jwt.demo.domain.DetailedProfile;
 import in.sdqali.spring.jwt.demo.domain.MinimalProfile;
 import in.sdqali.spring.jwt.demo.domain.Profile;
 import org.springframework.stereotype.Component;
@@ -33,5 +34,9 @@ public class ProfileService {
 
     public Optional<MinimalProfile> minimal(String username) {
         return get(username).map(profile -> new MinimalProfile(profile));
+    }
+
+    public Optional<DetailedProfile> detailed(String username) {
+        return get(username).map(profile -> new DetailedProfile(profile));
     }
 }
