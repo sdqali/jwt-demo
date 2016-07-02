@@ -26,7 +26,7 @@ public class ProfileService {
         });
     }
 
-    private Optional<Profile> get(String username) {
+    protected Optional<Profile> get(String username) {
         return profiles.stream()
                 .filter(profile -> profile.getLogin().getUsername().equals(username))
                 .findFirst();
