@@ -45,6 +45,12 @@
 			<version>1.16.8</version>
 			<scope>provided</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.6.0</version>
+		</dependency>
 	</dependencies>
 	
 	<build>
