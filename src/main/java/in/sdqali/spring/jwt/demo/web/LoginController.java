@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
 
+import java.io.IOException;
+
 import static java.lang.String.format;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -41,7 +43,11 @@ public class LoginController {
                                 HttpServletResponse response) {
         return loginService.login(credentials)
                 .map(minimalProfile -> {
-                    response.setHeader("Authorization", format("Bearer %s", jwtService.tokenFor(minimalProfile)));
+                    try {
+                        response.setHeader("Authorization", format("Bearer %s", jwtService.tokenFor(minimalProfile)));
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
                     return minimalProfile;
                 })
                 .orElseThrow(() -> new FailedToLoginException(credentials.getUsername()));
