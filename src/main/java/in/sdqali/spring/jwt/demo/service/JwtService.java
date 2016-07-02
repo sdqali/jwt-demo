@@ -30,7 +30,7 @@ public class JwtService {
         this.secretKeyProvider = secretKeyProvider;
     }
 
-    public Object tokenFor(MinimalProfile minimalProfile) throws IOException, URISyntaxException {
+    public String tokenFor(MinimalProfile minimalProfile) throws IOException, URISyntaxException {
         byte[] secretKey = secretKeyProvider.getKey();
         Date expiration = Date.from(LocalDateTime.now().plusHours(2).toInstant(UTC));
         HashMap<String, Object> claims = new HashMap<>();
