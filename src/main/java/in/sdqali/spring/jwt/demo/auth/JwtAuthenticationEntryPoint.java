@@ -21,8 +21,8 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
             throws IOException, ServletException {
         httpServletResponse.setStatus(SC_FORBIDDEN);
         httpServletResponse.setContentType(MediaType.APPLICATION_JSON_VALUE);
-        byte[] body = new ObjectMapper().writeValueAsBytes(Collections.singletonMap("error", e.getCause().getMessage
-                ()));
+        byte[] body = new ObjectMapper()
+                .writeValueAsBytes(Collections.singletonMap("error", e.getCause().getMessage()));
         httpServletResponse.getOutputStream().write(body);
     }
 }
