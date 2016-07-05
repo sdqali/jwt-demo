@@ -50,7 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         http.authorizeRequests()
-                .antMatchers("/login")
+                .antMatchers("/login", "/bower_components/**/*", "/app/**/*", "/index.html")
                 .permitAll()
                 .antMatchers("/**/*")
                 .hasAuthority("ROLE_USER")
