@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.time.LocalDateTime;
 import java.util.Date;
-import java.util.HashMap;
 
 import static java.time.ZoneOffset.UTC;
 
@@ -33,10 +32,8 @@ public class JwtService {
     public String tokenFor(MinimalProfile minimalProfile) throws IOException, URISyntaxException {
         byte[] secretKey = secretKeyProvider.getKey();
         Date expiration = Date.from(LocalDateTime.now().plusHours(2).toInstant(UTC));
-        HashMap<String, Object> claims = new HashMap<>();
-        claims.put("username", minimalProfile.getUsername());
         return Jwts.builder()
-                .setSubject("jwt-demo")
+                .setSubject(minimalProfile.getUsername())
                 .setExpiration(expiration)
                 .setIssuer(ISSUER)
                 .signWith(SignatureAlgorithm.HS512, secretKey)
