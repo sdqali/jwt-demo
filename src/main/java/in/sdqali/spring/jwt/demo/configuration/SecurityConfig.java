@@ -47,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable();
+        http.csrf().ignoringAntMatchers("/login");
 
         http.authorizeRequests()
                 .antMatchers("/login", "/bower_components/**/*", "/app/**/*", "/index.html")
