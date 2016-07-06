@@ -39,7 +39,7 @@ public class JwtService {
         byte[] secretKey = secretKeyProvider.getKey();
         Date expiration = Date.from(LocalDateTime.now(UTC).plusHours(2).toInstant(UTC));
         return Jwts.builder()
-                .setSubject("jwt-demo")
+                .setSubject(minimalProfile.getUsername())
                 .setExpiration(expiration)
                 .setIssuer(ISSUER)
                 .claim(USERNAME, minimalProfile.getUsername())
