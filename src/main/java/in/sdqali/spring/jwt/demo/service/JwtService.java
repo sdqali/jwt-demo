@@ -42,7 +42,6 @@ public class JwtService {
                 .setSubject(minimalProfile.getUsername())
                 .setExpiration(expiration)
                 .setIssuer(ISSUER)
-                .claim(USERNAME, minimalProfile.getUsername())
                 .signWith(SignatureAlgorithm.HS512, secretKey)
                 .compact();
     }
@@ -50,6 +49,6 @@ public class JwtService {
     public Optional<MinimalProfile> verify(String token) throws IOException, URISyntaxException {
         byte[] secretKey = secretKeyProvider.getKey();
         Jws<Claims> claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
-        return profileService.minimal(claims.getBody().get(USERNAME).toString());
+        return profileService.minimal(claims.getBody().getSubject().toString());
     }
 }
