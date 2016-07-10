@@ -25,18 +25,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private JwtAuthenticationEntryPoint jwtAuthEndPoint;
-    
+
     @Override
     public void configure(AuthenticationManagerBuilder auth)  throws Exception {
         auth.authenticationProvider(jwtAuthenticationProvider);
-    }
-
-    @Bean
-    public FilterRegistrationBean filterRegistrationBean () {
-        FilterRegistrationBean registrationBean = new FilterRegistrationBean();
-        registrationBean.setFilter(jwtAuthFilter);
-        registrationBean.setEnabled(false);
-        return registrationBean;
     }
 
     @Override
