@@ -25,13 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private JwtAuthenticationEntryPoint jwtAuthEndPoint;
-
-    @Bean(name="authenticationManager")
-    @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
-    }
-
+    
     @Override
     public void configure(AuthenticationManagerBuilder auth)  throws Exception {
         auth.authenticationProvider(jwtAuthenticationProvider);
