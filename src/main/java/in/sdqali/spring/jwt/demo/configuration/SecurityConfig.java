@@ -35,8 +35,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().ignoringAntMatchers("/login");
 
+        String[] patterns = new String[] {
+            "/login",
+            "/bower_components/**/*",
+            "/app/**/*",
+            "/index.html",
+            "/home.html",
+            "/signin.html"
+        };
         http.authorizeRequests()
-                .antMatchers("/login", "/bower_components/**/*", "/app/**/*", "/index.html")
+                .antMatchers(patterns)
                 .permitAll()
                 .antMatchers("/**/*")
                 .hasAuthority("ROLE_USER")
