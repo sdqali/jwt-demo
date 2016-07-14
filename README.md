@@ -21,7 +21,10 @@ bower install
 mvn spring-boot:run
 ```
 
-### Authenticating
+### Usage
+The application can be accessed by navigating to [http://localhost:8080](http://localhost:8080) in a browser. Please look inside `src/main/resources/profiles.json` for credentials.
+
+### API
 * Obtain a JWT:
 ```bash
 curl -v -X POST "http://localhost:8080/login" -d '{"username":"greenrabbit948", "password":"celeste"}' --header "Content-Type: application/json"
