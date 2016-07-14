@@ -1,5 +1,5 @@
 ## JWT Demo
-And example Spring Boot application with an API capable of authenticating with JWTs and a front end capable of authenticating against this API.
+An example Spring Boot application with an API capable of authenticating with JWTs and a front end capable of authenticating against this API.
 For motivation and discussion of the code, please see my series of [blog posts](http://sdqali.in/blog/2016/07/02/jwt-authentication-with-spring-web---part-1/).
 
 ### Dependencies
